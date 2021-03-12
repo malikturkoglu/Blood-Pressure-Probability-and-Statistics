@@ -1,0 +1,220 @@
+---
+title: "STAT253 â€“ Homework1"
+author: "malik tÃ¼rkoÄŸlu - 150116044"
+date: "25 Mart 2019"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#1-) Quantitave data is numerical , Qualitative is descriptive data, therefore all of them quantiative except gender is qualitative. Qualitative data is multivariate and discrete 2-) bar chart
+
+``x <- read.table(file="C:/Users/malik t�rko�lu/Documents/HW1_Data_v1.csv",header=TRUE,sep=";")
+View(x)
+x[1,] # check the results
+
+#Assing to information to variables
+men= x[x[,"GENDER"] == 0,]
+women = x[x[,"GENDER"] == 1,]
+sysbp_men = x[x$GENDER == 0 , "SYSBP"]
+diasbp_men = x[x$GENDER == 0 , "DIASBP"]
+sysbp_women= x[x$GENDER == 1 , "SYSBP"]
+diasbp_women = x[x$GENDER == 1 , "DIASBP"]
+
+
+# -3-A-
+calc_meansys_men <- mean(sysbp_men)
+calc_meansys_women <- mean(sysbp_women)
+calc_meandia_men <- mean(diasbp_men)
+calc_meandia_women <- mean(diasbp_women)
+
+
+# -3-B-                                    *********************************
+var(sysbp_men)
+var(sysbp_women)
+var(diasbp_men)
+var(diasbp_women)
+
+# 3-C-                                        *****************************
+
+sd_sys_men <- sd(sysbp_men)
+sd_sys_women <- sd(sysbp_women)
+sd_dia_men <- sd(diasbp_men)
+sd_dia_women <- sd(diasbp_women)
+
+# 3-D-                                         *******************************
+#sysbp-men
+lower_sys_men <- quantile(sysbp_men , 0.25)
+upper_Sys_men <- quantile(sysbp_men , 0.75)
+
+
+#sysbp - women      
+lower_sys_women <- quantile(sysbp_women , 0.25)
+upper_Sys_women <- quantile(sysbp_women , 0.75)
+
+#diasbp -men                   
+lower_dia_men <- quantile(diasbp_men , 0.25)
+upper_dia_men <- quantile(diasbp_women , 0.75)
+
+#diasbp- women
+lower_dia_women <- quantile(diasbp_women , 0.25)
+upper_dia_women <- quantile(diasbp_women , 0.75)
+
+# -3-E                            ***********************
+
+
+# sysbp-men
+min(sysbp_men)
+max(sysbp_men)
+
+# sysbp-women
+min(sysbp_women)
+max(sysbp_women)
+
+#diasbp-men
+min(diasbp_men)
+max(diasbp_men)
+
+#diasbp-women
+min(diasbp_women)
+max(diasbp_women)
+
+
+#-3-F-                 ************************
+
+
+#range sysbp men
+ran_sys_men <- max(sysbp_mem) - min(sysbp_men) 
+
+#range sysbp women
+ran_sys_women <- max(sysbp_women) - min(sysbp_women)
+
+#range diasbp men
+
+ran_dia_men <- max(diasbp_men) - min(diasbp_men) 
+
+#range diasbp women
+
+ran_dia_women<- max(diasbp_women) - min(diasbp_women)
+
+# -3-G-                                **********************
+
+#range/std
+#men Sysbp
+ran_sys_men/sd_sys_men
+#women sysbp
+ran_sys_women/sd_sys_women
+#men diasbp
+ran_dia_men/sd_dia_men
+#women diasbp
+ran_dia_women/sd_dia_women
+
+
+#-3-H                                ********************************
+
+calc_median_sys_men <- median(sysbp_men)
+calc_median_sys_women <- median(sysbp_women)
+calc_median_dia_men <- median(diasbp_men)
+calc_median_dia_women <- median(diasbp_women)
+
+#-3-i-                                    *************************
+
+#men sysbp
+upper_sys_men - lower_sys_men
+
+# women sysbp
+upper_Sys_women - lower_sys_women
+
+#men diasbp
+upper_dia_men - lower_dia_men
+
+#women diasbp
+upper_dia_women - lower_dia_women
+
+
+#-3-J-                                       ********************************
+
+#five number men-sysbp
+fivenum(sysbp_men)
+
+#five number women-sysbp
+fivenum(sysbp_women)
+
+#five number men-diasbp
+fivenum(diasbp_men)
+
+#five number of women-diasbp
+fivenum(diasbp_women)
+
+#-3-L-                                 ********************************
+
+#stem-leaf plot for men sysbp
+stem(sysbp_men)
+
+#stem-leaf plot for women sysbp
+stem(sysbp_women)
+
+#stem-leaf plot for men diasbp
+stem(diasbp_men)
+
+#stem-leaf plot for women diasbp
+stem(diasbp_women)
+
+
+#-3-M-                                 **********************
+
+
+#histogGRams of men sysbp
+hist(sysbp_men, col = 9)
+#histograms of women sysbp 
+hist(sysbp_women, col = 3)
+#histograms of men diasbp 
+hist(diasbp_men, col = 14)
+#histograms of women diasbp 
+hist(diasbp_women, col = 4)
+
+
+#-3-N-                                    ******************************
+
+
+#dotplot sysbp men
+plot(sysbp_men,pch=19, col=7)
+#dotplot sysbp women
+plot(sysbp_women,pch=19, col=1)
+#dotplot diasbp men
+plot(diasbp_men,pch=19, col=8)
+#dotplot diasbp women
+plot(diasbp_women,pch=19, col=19)
+
+#-3-Q-                                     ***********************
+
+plot(sysbp_men, diasbp_men, pch = 19, col = c("blue"))
+plot(sysbp_women, diasbp_women, pch = 19, col = c("black"))
+
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
